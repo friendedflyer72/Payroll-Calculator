@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import Navbar from "./components/Navbar";
+import InputForm from "./components/InputForm";
+import PayrollDisplay from "./components/PayrollDisplay";
 
-function App() {
+const App = () => {
+  const [payDetails, setPayDetails] = useState([]);
+  const [mode, setMode] = useState("light");
+
+  const toggleMode = () => {
+    if (mode === "dark") {
+      document.body.style.backgroundColor = "white";
+      document.body.style.color = "black";
+      setMode("light");
+    } else {
+      document.body.style.backgroundColor = "#252e49";
+      document.body.style.color = "white";
+      setMode("dark");
+    }
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar mode={mode} toggleMod={toggleMode} Title="Payroll Calculator" />
+      <InputForm setPayDetails={setPayDetails} />
+      <PayrollDisplay payDetails={payDetails} />
     </div>
   );
-}
+};
 
 export default App;
