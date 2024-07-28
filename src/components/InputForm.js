@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 
-const InputForm = ({ setPayDetails }) => {
+const InputForm = ({ setPayDetails, mode }) => {
   const [days, setDays] = useState([]);
   const [payRates, setPayRates] = useState({
-    weekday: 0,
-    saturday: 0,
-    sunday: 0,
+    weekday: '',
+    saturday: '',
+    sunday: '',
   });
 
   const handleAddDay = () => {
@@ -45,7 +45,7 @@ const InputForm = ({ setPayDetails }) => {
   };
 
   return (
-    <div className="p-6 max-w-lg mx-auto bg-[#EBF5EE] rounded-xl shadow-md space-y-4">
+    <div className={`p-6 max-w-lg mx-auto ${mode === 'dark' ? 'bg-gray-900 text-white' : 'bg-white text-black'} rounded-t-xl shadow-xl space-y-4`}>
       <h2 className="text-2xl font-bold">Enter Work Details</h2>
       <button
         className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
@@ -101,7 +101,7 @@ const InputForm = ({ setPayDetails }) => {
         onChange={(e) => handleRateChange('sunday', e.target.value)}
       />
       <button
-        className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
+        className="float-right bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
         onClick={calculatePayroll}
       >
         Calculate Payroll
