@@ -1,10 +1,11 @@
 import React from "react";
 import { FaMoon, FaSun } from "react-icons/fa";
+import { IoSunny, IoMoon } from "react-icons/io5";
 import { FcCalculator } from "react-icons/fc";
 
 export default function Navbar(props) {
   return (
-    <nav className={`navbar w-full h-12 flex items-center navbar-expand-lg px-14 mb-10 ${props.mode === 'dark' ? 'bg-gray-900' : 'bg-[#EBF5EE]'}`}>
+    <nav className={`navbar w-full h-12 flex items-center navbar-expand-lg px-14 mb-10 ${props.mode === 'dark' ? 'bg-gray-900' : 'bg-[#b7e1f7]'}`}>
       <FcCalculator  className="mr-2" size={30}/>
       <h1 className={`text-lg ${props.mode === 'dark' ? 'text-white' : 'text-black'}`}> {props.Title}</h1>
       <ul className="flex-grow">
@@ -14,9 +15,9 @@ export default function Navbar(props) {
       </ul>
       <div className="ml-auto flex items-center">
         {props.mode === "dark" ? (
-          <FaMoon className="text-white mr-2" />
+          <IoMoon className="text-white mr-2" />
         ) : (
-          <FaSun className="text-black mr-2" />
+          <IoSunny className="text-black mr-2" />
         )}
         <label className={`relative inline-flex cursor-pointer items-center form-check form-switch text-${props.mode === "light" ? "black" : "white"}`}>
           <input

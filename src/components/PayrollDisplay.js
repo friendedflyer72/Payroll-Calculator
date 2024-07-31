@@ -4,7 +4,7 @@ const PayrollDisplay = ({ payDetails, mode }) => {
   const totalPay = payDetails.reduce((acc, day) => acc + day.pay, 0);
 
   return (
-    <div className={`p-6 max-w-lg mx-auto ${mode === 'dark' ? 'bg-gray-900 text-white' : 'bg-white text-black'} rounded-b-xl shadow-md space-y-4`}>
+    <div className={`p-6 max-w-4xl mx-auto ${mode === 'dark' ? 'bg-gray-900 text-white' : 'bg-white text-black'} rounded-b-xl shadow-md space-y-4`}>
       <h2 className='text-2xl font-bold'>Payroll Details</h2>
       <ul>
         {payDetails.map((day, index) => (

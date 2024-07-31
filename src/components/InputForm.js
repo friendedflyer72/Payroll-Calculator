@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { IoMdAdd } from "react-icons/io";
 
 const InputForm = ({ setPayDetails, mode }) => {
   const [days, setDays] = useState([]);
@@ -45,20 +46,23 @@ const InputForm = ({ setPayDetails, mode }) => {
   };
 
   return (
-    <div className={`p-6 max-w-lg mx-auto ${mode === 'dark' ? 'bg-gray-900 text-white' : 'bg-white text-black'} rounded-t-xl shadow-xl space-y-4`}>
+    <div className={`p-6 max-w-4xl mx-auto ${mode === 'dark' ? 'bg-gray-900 text-white' : 'bg-white text-black'} rounded-t-xl shadow-xl space-x-10 md:flex`}>
+      <div className='md:w-1/2 md:px-4'>
+      <div className='flex'>
       <h2 className="text-2xl font-bold">Enter Work Details</h2>
       <button
-        className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+        className="flex bg-blue-500 text-white px-4 py-2 ml-2 rounded hover:bg-blue-600"
         onClick={handleAddDay}
       >
-        Add Day
+        Add Day<IoMdAdd className='items-center text-center my-auto ml-1' />
       </button>
+      </div>
       {days.map((day, index) => (
         <div key={index} className="space-y-2">
           <input
             type="text"
             placeholder="Day (e.g., Monday)"
-            className="w-full px-3 py-2 border border-gray-300 rounded"
+            className="w-full px-3 py-2 mt-2 border border-gray-300 rounded"
             value={day.day}
             onChange={(e) => handleDayChange(index, 'day', e.target.value)}
           />
@@ -78,34 +82,37 @@ const InputForm = ({ setPayDetails, mode }) => {
           />
         </div>
       ))}
+      </div>
+      <div className='md:w-1/2 mt-0'>
       <h2 className="text-2xl font-bold">Enter Pay Rates</h2>
       <input
         type="number"
         placeholder="Weekday Rate"
-        className="w-full px-3 py-2 border border-gray-300 rounded"
+        className="w-full px-3 my-2 py-2 border border-gray-300 rounded"
         value={payRates.weekday}
         onChange={(e) => handleRateChange('weekday', e.target.value)}
       />
       <input
         type="number"
         placeholder="Saturday Rate"
-        className="w-full px-3 py-2 border border-gray-300 rounded"
+        className="w-full px-3 my-2 py-2 border border-gray-300 rounded"
         value={payRates.saturday}
         onChange={(e) => handleRateChange('saturday', e.target.value)}
       />
       <input
         type="number"
         placeholder="Sunday Rate"
-        className="w-full px-3 py-2 border border-gray-300 rounded"
+        className="w-full px-3 my-2 py-2 border border-gray-300 rounded"
         value={payRates.sunday}
         onChange={(e) => handleRateChange('sunday', e.target.value)}
       />
       <button
-        className="float-right bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
+        className="float-right bg-green-500 text-white px-4 py-2 mt-2 rounded hover:bg-green-600"
         onClick={calculatePayroll}
       >
         Calculate Payroll
       </button>
+    </div>
     </div>
   );
 };
