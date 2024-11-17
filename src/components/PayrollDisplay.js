@@ -9,7 +9,7 @@ const PayrollDisplay = ({ payDetails, mode }) => {
       <ul>
         {payDetails.map((day, index) => (
           <li key={index}>
-            {day.day}: {day.duration} hours - ${day.pay.toFixed(2)}
+            Date: {day.date || 'N/A'}, Day: {day.day}, Duration: {day.duration} hours - ${day.pay.toFixed(2)}
           </li>
         ))}
       </ul>
